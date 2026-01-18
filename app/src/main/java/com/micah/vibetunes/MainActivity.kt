@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.micah.vibetunes.presentation.screens.splash.SplashScreen
+import com.micah.vibetunes.presentation.navigation.MainScreen
 import com.micah.vibetunes.ui.theme.VibeTunesTheme
 
 class MainActivity : ComponentActivity() {
@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             VibeTunesTheme {
-                SplashScreen()
+                MainScreen()
             }
         }
     }
