@@ -27,7 +27,7 @@ sealed interface Destination{
 
     @Serializable
     data object Playlists : Destination{
-        override val icon = Icons.Default.PlaylistPlay
+        override val icon = Icons.Filled.PlaylistPlay
         override val label = "Playlists"
     }
 
