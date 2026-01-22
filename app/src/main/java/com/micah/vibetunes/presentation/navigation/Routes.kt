@@ -1,39 +1,36 @@
 package com.micah.vibetunes.presentation.navigation
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.MusicNote
-import androidx.compose.material.icons.filled.PlaylistPlay
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.ui.graphics.vector.ImageVector
 import kotlinx.serialization.Serializable
 
 @Serializable
-sealed interface Destination{
-    val icon: ImageVector
-    val label: String
+object HomeRoute
 
-    @Serializable
-    data object Home : Destination {
-        override val icon = Icons.Default.Home
-        override val label = "Home"
-    }
+@Serializable
+object SongsRoute
 
-    @Serializable
-    data object Songs : Destination {
-        override val icon = Icons.Default.MusicNote
-        override val label = "Songs"
-    }
+@Serializable
+object SearchRoute
 
-    @Serializable
-    data object Playlists : Destination{
-        override val icon = Icons.Filled.PlaylistPlay
-        override val label = "Playlists"
-    }
+@Serializable
+object PlaylistsRoute
 
-    @Serializable
-    data object Settings : Destination {
-        override val icon = Icons.Default.Settings
-        override val label = "Settings"
-    }
-}
+@Serializable
+object SettingsRoute
+
+@Serializable
+object ProfileRoute
+@Serializable
+object MainRoute
+
+@Serializable
+object SplashRoute
+
+
+@Serializable
+data class PlayerRoute(val songId: String = "default")
+
+@Serializable
+data class PlaylistRoute(val playlistId: String)
+
+@Serializable
+data class ArtistRoute(val artistId: String)

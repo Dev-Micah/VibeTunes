@@ -1,28 +1,39 @@
 package com.micah.vibetunes.presentation.navigation
 
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.micah.vibetunes.presentation.screens.home.HomeScreen
-import com.micah.vibetunes.presentation.screens.playlists.PlaylistsScreen
-import com.micah.vibetunes.presentation.screens.settings.SettingsScreen
-import com.micah.vibetunes.presentation.screens.songs.SongsScreen
+import androidx.navigation.compose.rememberNavController
+import com.micah.vibetunes.presentation.screens.splash.SplashScreen
 
 @Composable
-fun AppNavHost(
-    navController: NavHostController,
-    modifier: Modifier = Modifier
-) {
+fun AppNavHost() {
+    val navController = rememberNavController()
+
     NavHost(
         navController = navController,
-        startDestination = Destination.Home,
-        modifier = modifier
+        startDestination = SplashRoute,
+        enterTransition = { slideInHorizontally { it } + fadeIn() },
+        exitTransition = { slideOutHorizontally { -it } + fadeOut() }
     ) {
-        composable<Destination.Home> { HomeScreen() }
-        composable<Destination.Songs> { SongsScreen() }
-        composable<Destination.Playlists> { PlaylistsScreen() }
-        composable<Destination.Settings> { SettingsScreen() }
+        composable<SplashRoute>(
+            enterTransition = { fadeIn() },
+            exitTransition = { fadeOut() }
+        ) {
+            SplashScreen(navController = navController)
+        }
+
+        composable<MainRoute>(
+            enterTransition = { fadeIn() },
+            exitTransition = { fadeOut() }
+        ) {
+            MainScreen(appNavController = navController)
+        }
+
+
     }
 }
